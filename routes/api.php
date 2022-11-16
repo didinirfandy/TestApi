@@ -29,7 +29,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::controller(Api::class)->group(function () {
-    Route::get('checklist', 'index');
+    Route::get('checklists', 'index');
     Route::post('checklist', 'store');
     Route::get('checklist/{id}', 'show');
     Route::put('checklist/{id}', 'update');
