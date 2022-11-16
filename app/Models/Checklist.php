@@ -9,6 +9,6 @@ class Checklist extends Model
 {
     use HasFactory;
     
-    protected $table = 'm_checklist';
+    // protected $table = 'm_checklist';
     protected $fillable = ['name', 'itemName'];
 }
