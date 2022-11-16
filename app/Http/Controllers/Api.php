@@ -43,10 +43,10 @@ class Api extends Controller
 
     public function show($id)
     {
-        $todo = Checklist::find($id);
+        $list = Checklist::find($id);
         return response()->json([
             'status' => 'success',
-            'todo' => $todo,
+            'list' => $list,
         ]);
     }
 
