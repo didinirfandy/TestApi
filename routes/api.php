@@ -14,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+
 });
+
+Route::controller(TodoController::class)->group(function () {
+    Route::get('checklist', 'index');
+    Route::post('checklist', 'store');
+    Route::get('checklist/{id}', 'show');
+    Route::put('checklist/{id}', 'update');
+    Route::delete('checklist/{id}', 'destroy');
+}); 
