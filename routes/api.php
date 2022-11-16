@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ Route::controller(AuthController::class)->group(function () {
 
 });
 
-Route::controller(TodoController::class)->group(function () {
+Route::controller(Api::class)->group(function () {
     Route::get('checklist', 'index');
     Route::post('checklist', 'store');
     Route::get('checklist/{id}', 'show');
