@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|email',
+            'username' => 'required|string|max:255',
             'password' => 'required|string',
         ]);
         $credentials = $request->only('username', 'password');
@@ -30,23 +30,23 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $Login = Auth::user();
+        $user = Auth::user();
         return response()->json([
                 'status' => 'success',
-                'user' => $Login,
+                'user' => $user,
                 'authorisation' => [
                     'token' => $token,
                     'type' => 'bearer',
                 ]
             ]);
-
     }
 
-    public function register(Request $request){
+    public function register(Request $request) 
+    {
         $request->validate([
+            'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'username' => 'required|string|max:255',
         ]);
 
         $user = User::create([
